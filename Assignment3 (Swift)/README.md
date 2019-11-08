@@ -5,6 +5,47 @@ Background
 
 For this assignment, you will be using parser combinators to convert input strings into abstract syntax trees. This conversion process is known as parsing. The input strings are intended to represent arithmetic and boolean expressions using S-expressions. With S-expressions, operators go before the operands, and parentheses surround operators and their operands. For example, consider the following expressions and their S-expression equivalents:
 
+{::nomarkdown}
+
+<!-- HTML CODE-->
+
+<table border="1">
+      <tbody><tr>
+        <th>Expression</th>
+        <th>S-Expression Equivalent</th>
+      </tr>
+      <tr>
+        <td><code>123</code></td>
+        <td><code>123</code></td>
+      </tr>
+      <tr>
+        <td><code>true</code></td>
+        <td><code>true</code></td>
+      </tr>
+      <tr>
+        <td><code>1 + 2</code></td>
+        <td><code>(+ 1 2)</code></td>
+      </tr>
+      <tr>
+        <td><code>true &amp;&amp; false</code></td>
+        <td><code>(&amp;&amp; true false)</code></td>
+      </tr>
+      <tr>
+        <td><code>1 + (2 + 3)</code></td>
+        <td><code>(+ 1 (+ 2 3))</code></td>
+      </tr>
+      <tr>
+        <td><code>true &amp;&amp; (true || false)</code></td>
+        <td><code>(&amp;&amp; true (|| true false))</code></td>
+      </tr>
+      <tr>
+        <td><code>(1 + 2) || (true &amp;&amp; false)</code></td>
+        <td><code>(|| (+ 1 2) (&amp;&amp; true false))</code></td>
+      </tr>
+    </tbody></table>
+
+{:/}
+
 Expression	                S-Expression Equivalent
 
 123	                        123
