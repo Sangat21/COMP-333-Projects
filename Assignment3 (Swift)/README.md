@@ -2,16 +2,25 @@ Assignment 3:
 Parser Combinators in Swift
 
 Background
+
 For this assignment, you will be using parser combinators to convert input strings into abstract syntax trees. This conversion process is known as parsing. The input strings are intended to represent arithmetic and boolean expressions using S-expressions. With S-expressions, operators go before the operands, and parentheses surround operators and their operands. For example, consider the following expressions and their S-expression equivalents:
 
 Expression	                S-Expression Equivalent
+
 123	                        123
+
 true	                      true
+
 1 + 2	                      (+ 1 2)
+
 true && false	              (&& true false)
+
 1 + (2 + 3)	                (+ 1 (+ 2 3))
+
 true && (true || false)	    (&& true (|| true false))
+
 (1 + 2) || (true && false)	(|| (+ 1 2) (&& true false))
+
 
 S-expressions are used as the basis of the syntactic representation of some languages, including Lisp and Scheme. In our case, we use S-expressions because they are easier to parse than typical expressions, particularly when using parser combinators. (Note that we could parse typical expressions with parser combinators by eliminating left recursion, but this is beyond the scope of this class.)
 
