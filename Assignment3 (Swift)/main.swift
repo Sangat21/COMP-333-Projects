@@ -481,24 +481,21 @@ func unopP(tokenRep: Token, makeOp: @escaping (Exp) -> Exp) -> Parser<Exp> {
 //          '(' '||' expr expr ')'
 //
 func expressionP() -> Parser<Exp> { // DO NOT MODIFY THIS LINE
-    // TODO: write your code here.
-    // You need to define a parser which handles Exp.
-    // The line below is a stub which compiles but
-    // fails every test.
-    //
-    // It's recommended to implement things in the following order:
-    // - intLiteral (hint: see numP and mapP)
-    // - trueExp, falseExp (hint: see oneToOneP)
-    // - negate, not (hint: see unopP)
-    // - binary operations, like plus and or (hint: see binopP)
-    //
-    // As another hint, you'll need to use orP a _lot_.
-    //
-    // My reference solution is 11 lines of code.  If you start needing
-    // a lot more code than this, talk with me to make sure you're still
-    // on the right track.
+    
+    // 11 LINES ---> Boom
+    return orP(mapP(parser: numP(), operation:{ input in Exp.intLiteral(input) }),
+                        orP(oneToOneP(tokenRep:Token.trueToken, expRep: Exp.trueExp),
+                              orP(oneToOneP(tokenRep: Token.falseToken, expRep: Exp.falseExp),
+                                  orP(unopP(tokenRep: Token.minus, makeOp: { e in Exp.negate(e) }),
+                                      orP(unopP(tokenRep: Token.notToken, makeOp: { e in Exp.not(e)}),
+                                          orP(binopP(tokenRep: Token.plus, binopRep: Binop.plus),
+                                              orP(binopP(tokenRep: Token.minus, binopRep: Binop.minus),
+                                                  orP(binopP(tokenRep: Token.mult, binopRep: Binop.mult),
+                                                      orP(binopP(tokenRep: Token.div, binopRep: Binop.div),
+                                                          orP(binopP(tokenRep: Token.andToken, binopRep: Binop.andBinop)
+                                                              , binopP(tokenRep: Token.orToken, binopRep: Binop.orBinop)))))))))))
 
-    return { _ in ParseResult.failure("Default stub for Exp") }
+    //return { _ in ParseResult.failure("Default stub for Exp") }
 } // expressionP   // DO NOT MODIFY THIS LINE
 
 extension MyList where A == Token {
